@@ -89,6 +89,7 @@ class ReplayTab(BaseTab):
     def onClose(self):
         self.thread.close()
         self.thread.wait()
+        self.eventHandler.cleanup()
 
     def setScaleToWindow(self, status: int):
         """
@@ -105,5 +106,6 @@ class ReplayTab(BaseTab):
         RDP session being displayed.
         :param event: The event of the parent that has been resized
         """
-        newScale = (self.scrollViewer.height() - self.scrollViewer.horizontalScrollBar().height()) / self.widget.sessionHeight
+        newScale = (self.scrollViewer.height() - self.scrollViewer.horizontalScrollBar().height()) \
+            / self.widget.sessionHeight
         self.widget.scale(newScale)
