@@ -45,6 +45,6 @@ setup(name='pyrdp',
         'twisted',
     ],
     extras_require={
-        "full": ['av', 'pillowcase', 'PySide2', 'dbus-python;platform_system!="Windows"', 'notify2;platform_system!="Windows"']
+        "full": ['av>=6,<7', 'pillowcase', 'PySide2', 'dbus-python;platform_system!="Windows"', 'notify2;platform_system!="Windows"']
     }
 )
