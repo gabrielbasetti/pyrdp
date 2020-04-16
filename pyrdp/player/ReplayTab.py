@@ -54,6 +54,7 @@ class ReplayTab(BaseTab):
         self.player.addObserver(self.eventHandler)
 
     def play(self):
+        self.controlBar.button.setPlaying(True)
         self.controlBar.play.emit()
 
     def readEvent(self, position: int):
@@ -97,8 +98,8 @@ class ReplayTab(BaseTab):
         the scaling calculation.
         :param status: state of the checkbox
         """
-        self.parentResized(None)
         self.widget.setScaleToWindow(status)
+        self.parentResized(None)
 
     def parentResized(self, event: QResizeEvent):
         """
@@ -106,6 +107,5 @@ class ReplayTab(BaseTab):
         RDP session being displayed.
         :param event: The event of the parent that has been resized
         """
-        newScale = (self.scrollViewer.height() - self.scrollViewer.horizontalScrollBar().height()) \
-            / self.widget.sessionHeight
+        newScale = self.scrollViewer.viewport().height() / self.widget.sessionHeight
         self.widget.scale(newScale)
