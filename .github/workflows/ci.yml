@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Build
 
 on:
   pull_request:
@@ -40,7 +40,7 @@ jobs:
       run: sudo apt install libdbus-1-dev libdbus-glib-1-dev libgl1-mesa-glx git python3-dev
     - name: Install PyRDP
       working-directory: .
-      run: pip install -U -e .
+      run: pip install -U -e .[full]
 
     - name: Install ci dependencies
       run: pip install -r requirements-ci.txt
@@ -85,7 +85,7 @@ jobs:
         run: pip --version
       - name: Install PyRDP
         working-directory: .
-        run: pip install -U -e .
+        run: pip install -U -e .[full]
 
       - name: Extract test files
         uses: DuckSoft/extract-7z-action@v1.0
@@ -99,8 +99,8 @@ jobs:
 
       - name: pyrdp-mitm.py initialization test
         working-directory: ./
-        run: bin/pyrdp-mitm.py --test localhost
+        run: python test/test_mitm_initialization.py dummy_value
 
       - name: pyrdp-player.py read a replay in headless mode test
         working-directory: ./
-        run: bin/pyrdp-player.py --headless test/files/test_session.replay
+        run: python bin/pyrdp-player.py --headless test/files/test_session.replay

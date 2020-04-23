@@ -1,4 +1,7 @@
 # PyRDP
+
+![pipeline status](https://github.com/GoSecure/pyrdp/workflows/Build/badge.svg?branch=master)
+
 **Warning:** currently, the pyrdp-replay branch will most likely only work for traffic captured while PyRDP was running, because we don't implement the usual RDP output API. See [#153](https://github.com/GoSecure/pyrdp/issues/153).
 
 PyRDP is a Python 3 Remote Desktop Protocol (RDP) Man-in-the-Middle (MITM) and library.
