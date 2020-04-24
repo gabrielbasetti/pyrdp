@@ -3,7 +3,7 @@
 
 #
 # This file is part of the PyRDP project.
-# Copyright (C) 2019 GoSecure Inc.
+# Copyright (C) 2019, 2020 GoSecure Inc.
 # Licensed under the GPLv3 or later.
 #
 
@@ -12,7 +12,7 @@ import setuptools
 from distutils.core import Extension, setup
 
 setup(name='pyrdp',
-    version='0.4.2dev',
+    version='0.4.2.dev0',
     description='Remote Desktop Protocol Man-in-the-Middle and library for Python 3',
     long_description="""Remote Desktop Protocol Man-in-the-Middle and library for Python 3""",
     author='Émilio Gonzalez, Francis Labelle',
@@ -31,20 +31,26 @@ setup(name='pyrdp',
         'bin/pyrdp-convert.py',
     ],
     install_requires=[
-        'appdirs',
-        'cryptography',
-        'names',
-        'progressbar2',
-        'pyasn1',
-        'pycryptodome',
+        'appdirs>=1,<2',
+        'cryptography>=2.2,<3',
+        'names>=0,<1',
+        'progressbar2>=3.20,<4',
+        'pyasn1>=0,<1',
+        'pycryptodome>=3.5,<4',
         'pyopenssl>=19,<20',
         'pytz',
-        'rsa',
-        'scapy',
-        'service_identity',
-        'twisted',
+        'rsa>=4,<5',
+        'scapy>=2.4,<3',
+        'service_identity>=18',
+        'twisted>=18',
     ],
     extras_require={
-        "full": ['av>=6,<7', 'pillowcase', 'PySide2', 'dbus-python;platform_system!="Windows"', 'notify2;platform_system!="Windows"']
+        "full": [
+            'av>=6,<7',
+            'pillowcase>=2',
+            'PySide2>=5.12,<6',
+            'dbus-python>=1.2<1.3;platform_system!="Windows"',
+            'notify2>=0.3,<1;platform_system!="Windows"'
+        ]
     }
 )
